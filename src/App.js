@@ -1,21 +1,52 @@
 import React from 'react';
-class App extends React.Component{
-    render() {
-        return <Title />
-    }
-}
-const Title= (props) => <h1>Title: {props.text}</h1>
-Title.propTypes = {
-    text(props,propName,component){
-        if (!(propName in props)){
-            return new Error('missing $(propName)')
-        }
 
-        if (props[propName].length < 10){
-            return new Error(" $(propName) length is less than 10")
+class App extends React.Component{
+    constructor (){
+        super()
+        this.state ={
+            textEvent : '-------'
         }
+        this.update = this.update.bind(this)
+    }
+    update (e) {
+        this.setState({textEvent: e.type})
+    }
+    render(){
+        return (
+            <div>
+                <textarea className="text_area"
+                    cols="30" rows="40"
+                    onKeyPress = {this.update}
+                    onCut = {this.update}
+                    onCopy = {this.update}
+                    onPaste = {this.update}
+                    onFocus ={this.update}
+                    onBlur = {this.update} />
+                <h1> {this.state.textEvent} </h1>
+            </div>
+        )
+
     }
 }
+// ++++++++++++++++++++++++++++++++++++++++++++
+// class App extends React.Component{
+//     render() {
+//         return <Title />
+//     }
+// }
+// const Title= (props) => <h1>Title: {props.text}</h1>
+// Title.propTypes = {
+//     text(props,propName,component){
+//         if (!(propName in props)){
+//             return new Error('missing $(propName)')
+//         }
+//
+//         if (props[propName].length < 10){
+//             return new Error(" $(propName) length is less than 10")
+//         }
+//     }
+// }
+
 
 // class Heart extends React.Component{
 //     render(){
