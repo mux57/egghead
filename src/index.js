@@ -4,7 +4,7 @@ import App from './App';
 {/*import registerServiceWorker from './registerServiceWorker';*/}
 
 ReactDOM.render(
-    <App txt="I m coming from index.js"/>,
+    <App />,
     document.getElementById('root')
 );
 { /*registerServiceWorker();*/ }
